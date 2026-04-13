@@ -1,4 +1,4 @@
-const LibraryDatabase = require('../src/libraryDatabase');
+const LibraryDatabase = require('./libraryDatabase');
 
 describe('LibraryDatabase', () => {
     let db;

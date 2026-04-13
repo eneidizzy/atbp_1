@@ -1,7 +1,7 @@
-jest.mock('../src/libraryDatabase');
+jest.mock('./libraryDatabase');
 
-const LibraryDatabase = require('../src/libraryDatabase');
-const calculateFine = require('../src/fineCalculator');
+const LibraryDatabase = require('./libraryDatabase');
+const calculateFine = require('./fineCalculator');
 
 describe('calculateFine', () => {
     let mockDbInstance;

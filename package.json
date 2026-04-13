@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "bdd": "cucumber-js --format summary --format html:reports/cucumber-report.html",
-    "test:unit": "jest --config=jest.config.allure.js",
+    "test:unit": "jest",
     "test:api": "cucumber-js --format json:allure-results/cucumber.json",
     "test:ui": "npx playwright test --reporter=line,allure-playwright",
     "test:ui:headed": "npx playwright test --headed --reporter=line,allure-playwright",

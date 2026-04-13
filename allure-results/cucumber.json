@@ -14,9 +14,12 @@
             "keyword": "Дано ",
             "line": 12,
             "name": "книга с ID 1 для пользователя \"user123\"",
+            "match": {
+              "location": "steps\\librarySteps.js:14"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 54993899
             }
           },
           {
@@ -24,9 +27,12 @@
             "keyword": "И ",
             "line": 13,
             "name": "количество дней просрочки равно 5",
+            "match": {
+              "location": "steps\\librarySteps.js:47"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 582200
             }
           },
           {
@@ -34,9 +40,12 @@
             "keyword": "И ",
             "line": 14,
             "name": "ежедневный тариф составляет 2",
+            "match": {
+              "location": "steps\\librarySteps.js:52"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 354900
             }
           },
           {
@@ -44,9 +53,12 @@
             "keyword": "Когда ",
             "line": 15,
             "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "match": {
+              "location": "steps\\librarySteps.js:62"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 73253500
             }
           },
           {
@@ -54,9 +66,12 @@
             "keyword": "Тогда ",
             "line": 16,
             "name": "API возвращает статус-код 200",
+            "match": {
+              "location": "steps\\librarySteps.js:92"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 464300
             }
           },
           {
@@ -64,9 +79,12 @@
             "keyword": "И ",
             "line": 17,
             "name": "ответ содержит сообщение \"success\"",
+            "match": {
+              "location": "steps\\librarySteps.js:98"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 391700
             }
           },
           {
@@ -74,9 +92,12 @@
             "keyword": "И ",
             "line": 18,
             "name": "размер штрафа равен 10",
+            "match": {
+              "location": "steps\\librarySteps.js:105"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 1285300
             }
           }
         ],
@@ -95,9 +116,12 @@
             "keyword": "Дано ",
             "line": 21,
             "name": "книга с ID 4 для пользователя \"user456\"",
+            "match": {
+              "location": "steps\\librarySteps.js:14"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 27335800
             }
           },
           {
@@ -105,9 +129,12 @@
             "keyword": "И ",
             "line": 22,
             "name": "книга возвращена",
+            "match": {
+              "location": "steps\\librarySteps.js:57"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 507299
             }
           },
           {
@@ -115,9 +142,12 @@
             "keyword": "Когда ",
             "line": 23,
             "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "match": {
+              "location": "steps\\librarySteps.js:62"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 30670899
             }
           },
           {
@@ -125,9 +155,12 @@
             "keyword": "Тогда ",
             "line": 24,
             "name": "API возвращает статус-код 200",
+            "match": {
+              "location": "steps\\librarySteps.js:92"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 184499
             }
           },
           {
@@ -135,9 +168,12 @@
             "keyword": "И ",
             "line": 25,
             "name": "ответ содержит сообщение \"success\"",
+            "match": {
+              "location": "steps\\librarySteps.js:98"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 106400
             }
           },
           {
@@ -145,9 +181,12 @@
             "keyword": "И ",
             "line": 26,
             "name": "размер штрафа равен 0",
+            "match": {
+              "location": "steps\\librarySteps.js:105"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 458399
             }
           }
         ],
@@ -166,9 +205,12 @@
             "keyword": "Дано ",
             "line": 29,
             "name": "книга с ID 999 для пользователя \"user789\"",
+            "match": {
+              "location": "steps\\librarySteps.js:14"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 26352499
             }
           },
           {
@@ -176,9 +218,12 @@
             "keyword": "Когда ",
             "line": 30,
             "name": "я получаю данные книги по ID",
+            "match": {
+              "location": "steps\\librarySteps.js:39"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 36374599
             }
           },
           {
@@ -186,9 +231,12 @@
             "keyword": "Тогда ",
             "line": 31,
             "name": "API возвращает статус-код 404",
+            "match": {
+              "location": "steps\\librarySteps.js:92"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 198200
             }
           },
           {
@@ -196,9 +244,12 @@
             "keyword": "И ",
             "line": 32,
             "name": "ответ содержит текст ошибки \"Книга не найдена\"",
+            "match": {
+              "location": "steps\\librarySteps.js:124"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 1028999
             }
           }
         ],
@@ -217,9 +268,12 @@
             "keyword": "Дано ",
             "line": 35,
             "name": "книга с ID 2 для пользователя \"user456\"",
+            "match": {
+              "location": "steps\\librarySteps.js:14"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 29985799
             }
           },
           {
@@ -227,9 +281,12 @@
             "keyword": "Когда ",
             "line": 36,
             "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "match": {
+              "location": "steps\\librarySteps.js:62"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 19783800
             }
           },
           {
@@ -237,9 +294,12 @@
             "keyword": "Тогда ",
             "line": 37,
             "name": "API возвращает статус-код 200",
+            "match": {
+              "location": "steps\\librarySteps.js:92"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 150899
             }
           },
           {
@@ -247,9 +307,12 @@
             "keyword": "И ",
             "line": 38,
             "name": "ответ содержит сообщение \"success\"",
+            "match": {
+              "location": "steps\\librarySteps.js:98"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 195600
             }
           },
           {
@@ -257,9 +320,12 @@
             "keyword": "И ",
             "line": 39,
             "name": "размер штрафа равен 50",
+            "match": {
+              "location": "steps\\librarySteps.js:105"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 673600
             }
           }
         ],
@@ -278,9 +344,12 @@
             "keyword": "Дано ",
             "line": 42,
             "name": "книга с ID 1 для пользователя \"user1\"",
+            "match": {
+              "location": "steps\\librarySteps.js:14"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 33215900
             }
           },
           {
@@ -288,9 +357,12 @@
             "keyword": "И ",
             "line": 43,
             "name": "количество дней просрочки равно 0",
+            "match": {
+              "location": "steps\\librarySteps.js:47"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 199200
             }
           },
           {
@@ -298,9 +370,12 @@
             "keyword": "И ",
             "line": 44,
             "name": "ежедневный тариф составляет 2",
+            "match": {
+              "location": "steps\\librarySteps.js:52"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 125199
             }
           },
           {
@@ -308,9 +383,12 @@
             "keyword": "Когда ",
             "line": 45,
             "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "match": {
+              "location": "steps\\librarySteps.js:62"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 23735400
             }
           },
           {
@@ -318,9 +396,12 @@
             "keyword": "Тогда ",
             "line": 46,
             "name": "API возвращает статус-код 200",
+            "match": {
+              "location": "steps\\librarySteps.js:92"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 160099
             }
           },
           {
@@ -328,9 +409,12 @@
             "keyword": "И ",
             "line": 47,
             "name": "размер штрафа равен 0",
+            "match": {
+              "location": "steps\\librarySteps.js:105"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 691400
             }
           }
         ],
@@ -349,9 +433,12 @@
             "keyword": "Дано ",
             "line": 42,
             "name": "книга с ID 1 для пользователя \"user2\"",
+            "match": {
+              "location": "steps\\librarySteps.js:14"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 30424300
             }
           },
           {
@@ -359,9 +446,12 @@
             "keyword": "И ",
             "line": 43,
             "name": "количество дней просрочки равно 5",
+            "match": {
+              "location": "steps\\librarySteps.js:47"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 151500
             }
           },
           {
@@ -369,9 +459,12 @@
             "keyword": "И ",
             "line": 44,
             "name": "ежедневный тариф составляет 2",
+            "match": {
+              "location": "steps\\librarySteps.js:52"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 169699
             }
           },
           {
@@ -379,9 +472,12 @@
             "keyword": "Когда ",
             "line": 45,
             "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "match": {
+              "location": "steps\\librarySteps.js:62"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 17954899
             }
           },
           {
@@ -389,9 +485,12 @@
             "keyword": "Тогда ",
             "line": 46,
             "name": "API возвращает статус-код 200",
+            "match": {
+              "location": "steps\\librarySteps.js:92"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 162700
             }
           },
           {
@@ -399,9 +498,12 @@
             "keyword": "И ",
             "line": 47,
             "name": "размер штрафа равен 10",
+            "match": {
+              "location": "steps\\librarySteps.js:105"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 761099
             }
           }
         ],
@@ -420,9 +522,12 @@
             "keyword": "Дано ",
             "line": 42,
             "name": "книга с ID 1 для пользователя \"user3\"",
+            "match": {
+              "location": "steps\\librarySteps.js:14"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 52524100
             }
           },
           {
@@ -430,9 +535,12 @@
             "keyword": "И ",
             "line": 43,
             "name": "количество дней просрочки равно 10",
+            "match": {
+              "location": "steps\\librarySteps.js:47"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 211999
             }
           },
           {
@@ -440,9 +548,12 @@
             "keyword": "И ",
             "line": 44,
             "name": "ежедневный тариф составляет 2",
+            "match": {
+              "location": "steps\\librarySteps.js:52"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 426699
             }
           },
           {
@@ -450,9 +561,12 @@
             "keyword": "Когда ",
             "line": 45,
             "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "match": {
+              "location": "steps\\librarySteps.js:62"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 24980000
             }
           },
           {
@@ -460,9 +574,12 @@
             "keyword": "Тогда ",
             "line": 46,
             "name": "API возвращает статус-код 200",
+            "match": {
+              "location": "steps\\librarySteps.js:92"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 156700
             }
           },
           {
@@ -470,9 +587,12 @@
             "keyword": "И ",
             "line": 47,
             "name": "размер штрафа равен 20",
+            "match": {
+              "location": "steps\\librarySteps.js:105"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 707099
             }
           }
         ],
@@ -491,9 +611,12 @@
             "keyword": "Дано ",
             "line": 42,
             "name": "книга с ID 1 для пользователя \"user4\"",
+            "match": {
+              "location": "steps\\librarySteps.js:14"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 27605600
             }
           },
           {
@@ -501,9 +624,12 @@
             "keyword": "И ",
             "line": 43,
             "name": "количество дней просрочки равно 15",
+            "match": {
+              "location": "steps\\librarySteps.js:47"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 117999
             }
           },
           {
@@ -511,9 +637,12 @@
             "keyword": "И ",
             "line": 44,
             "name": "ежедневный тариф составляет 2",
+            "match": {
+              "location": "steps\\librarySteps.js:52"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 93100
             }
           },
           {
@@ -521,9 +650,12 @@
             "keyword": "Когда ",
             "line": 45,
             "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "match": {
+              "location": "steps\\librarySteps.js:62"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 10692499
             }
           },
           {
@@ -531,9 +663,12 @@
             "keyword": "Тогда ",
             "line": 46,
             "name": "API возвращает статус-код 200",
+            "match": {
+              "location": "steps\\librarySteps.js:92"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 334599
             }
           },
           {
@@ -541,9 +676,12 @@
             "keyword": "И ",
             "line": 47,
             "name": "размер штрафа равен 30",
+            "match": {
+              "location": "steps\\librarySteps.js:105"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 1051500
             }
           }
         ],
@@ -562,9 +700,12 @@
             "keyword": "Дано ",
             "line": 42,
             "name": "книга с ID 1 для пользователя \"user5\"",
+            "match": {
+              "location": "steps\\librarySteps.js:14"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 33991700
             }
           },
           {
@@ -572,9 +713,12 @@
             "keyword": "И ",
             "line": 43,
             "name": "количество дней просрочки равно 30",
+            "match": {
+              "location": "steps\\librarySteps.js:47"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 135999
             }
           },
           {
@@ -582,9 +726,12 @@
             "keyword": "И ",
             "line": 44,
             "name": "ежедневный тариф составляет 2",
+            "match": {
+              "location": "steps\\librarySteps.js:52"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 125800
             }
           },
           {
@@ -592,9 +739,12 @@
             "keyword": "Когда ",
             "line": 45,
             "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "match": {
+              "location": "steps\\librarySteps.js:62"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 17279599
             }
           },
           {
@@ -602,9 +752,12 @@
             "keyword": "Тогда ",
             "line": 46,
             "name": "API возвращает статус-код 200",
+            "match": {
+              "location": "steps\\librarySteps.js:92"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 147600
             }
           },
           {
@@ -612,9 +765,12 @@
             "keyword": "И ",
             "line": 47,
             "name": "размер штрафа равен 60",
+            "match": {
+              "location": "steps\\librarySteps.js:105"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 502399
             }
           }
         ],
@@ -633,9 +789,12 @@
             "keyword": "Дано ",
             "line": 58,
             "name": "книга с ID 1 для пользователя \"user6\"",
+            "match": {
+              "location": "steps\\librarySteps.js:14"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 19420299
             }
           },
           {
@@ -643,9 +802,12 @@
             "keyword": "И ",
             "line": 59,
             "name": "количество дней просрочки равно 7",
+            "match": {
+              "location": "steps\\librarySteps.js:47"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 156300
             }
           },
           {
@@ -653,9 +815,12 @@
             "keyword": "И ",
             "line": 60,
             "name": "ежедневный тариф составляет 2",
+            "match": {
+              "location": "steps\\librarySteps.js:52"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 92899
             }
           },
           {
@@ -663,9 +828,12 @@
             "keyword": "Когда ",
             "line": 61,
             "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "match": {
+              "location": "steps\\librarySteps.js:62"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 12792500
             }
           },
           {
@@ -673,9 +841,12 @@
             "keyword": "Тогда ",
             "line": 62,
             "name": "API возвращает статус-код 200",
+            "match": {
+              "location": "steps\\librarySteps.js:92"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 142100
             }
           },
           {
@@ -683,9 +854,12 @@
             "keyword": "И ",
             "line": 63,
             "name": "размер штрафа равен 14",
+            "match": {
+              "location": "steps\\librarySteps.js:105"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 566399
             }
           }
         ],
@@ -704,9 +878,12 @@
             "keyword": "Дано ",
             "line": 58,
             "name": "книга с ID 1 для пользователя \"user7\"",
+            "match": {
+              "location": "steps\\librarySteps.js:14"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 26321999
             }
           },
           {
@@ -714,9 +891,12 @@
             "keyword": "И ",
             "line": 59,
             "name": "количество дней просрочки равно 7",
+            "match": {
+              "location": "steps\\librarySteps.js:47"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 122500
             }
           },
           {
@@ -724,9 +904,12 @@
             "keyword": "И ",
             "line": 60,
             "name": "ежедневный тариф составляет 5",
+            "match": {
+              "location": "steps\\librarySteps.js:52"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 94299
             }
           },
           {
@@ -734,9 +917,12 @@
             "keyword": "Когда ",
             "line": 61,
             "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "match": {
+              "location": "steps\\librarySteps.js:62"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 12431999
             }
           },
           {
@@ -744,9 +930,12 @@
             "keyword": "Тогда ",
             "line": 62,
             "name": "API возвращает статус-код 200",
+            "match": {
+              "location": "steps\\librarySteps.js:92"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 206899
             }
           },
           {
@@ -754,9 +943,12 @@
             "keyword": "И ",
             "line": 63,
             "name": "размер штрафа равен 35",
+            "match": {
+              "location": "steps\\librarySteps.js:105"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 1247299
             }
           }
         ],
@@ -775,9 +967,12 @@
             "keyword": "Дано ",
             "line": 58,
             "name": "книга с ID 1 для пользователя \"user8\"",
+            "match": {
+              "location": "steps\\librarySteps.js:14"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 32268499
             }
           },
           {
@@ -785,9 +980,12 @@
             "keyword": "И ",
             "line": 59,
             "name": "количество дней просрочки равно 7",
+            "match": {
+              "location": "steps\\librarySteps.js:47"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 186799
             }
           },
           {
@@ -795,9 +993,12 @@
             "keyword": "И ",
             "line": 60,
             "name": "ежедневный тариф составляет 10",
+            "match": {
+              "location": "steps\\librarySteps.js:52"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 114100
             }
           },
           {
@@ -805,9 +1006,12 @@
             "keyword": "Когда ",
             "line": 61,
             "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "match": {
+              "location": "steps\\librarySteps.js:62"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 12592900
             }
           },
           {
@@ -815,9 +1019,12 @@
             "keyword": "Тогда ",
             "line": 62,
             "name": "API возвращает статус-код 200",
+            "match": {
+              "location": "steps\\librarySteps.js:92"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 166899
             }
           },
           {
@@ -825,9 +1032,12 @@
             "keyword": "И ",
             "line": 63,
             "name": "размер штрафа равен 70",
+            "match": {
+              "location": "steps\\librarySteps.js:105"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 722600
             }
           }
         ],
@@ -846,9 +1056,12 @@
             "keyword": "Дано ",
             "line": 58,
             "name": "книга с ID 1 для пользователя \"user9\"",
+            "match": {
+              "location": "steps\\librarySteps.js:14"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 20088999
             }
           },
           {
@@ -856,9 +1069,12 @@
             "keyword": "И ",
             "line": 59,
             "name": "количество дней просрочки равно 7",
+            "match": {
+              "location": "steps\\librarySteps.js:47"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 122499
             }
           },
           {
@@ -866,9 +1082,12 @@
             "keyword": "И ",
             "line": 60,
             "name": "ежедневный тариф составляет 3",
+            "match": {
+              "location": "steps\\librarySteps.js:52"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 103499
             }
           },
           {
@@ -876,9 +1095,12 @@
             "keyword": "Когда ",
             "line": 61,
             "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "match": {
+              "location": "steps\\librarySteps.js:62"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 14659700
             }
           },
           {
@@ -886,9 +1108,12 @@
             "keyword": "Тогда ",
             "line": 62,
             "name": "API возвращает статус-код 200",
+            "match": {
+              "location": "steps\\librarySteps.js:92"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 117799
             }
           },
           {
@@ -896,9 +1121,12 @@
             "keyword": "И ",
             "line": 63,
             "name": "размер штрафа равен 21",
+            "match": {
+              "location": "steps\\librarySteps.js:105"
+            },
             "result": {
-              "status": "undefined",
-              "duration": 0
+              "status": "passed",
+              "duration": 534900
             }
           }
         ],
