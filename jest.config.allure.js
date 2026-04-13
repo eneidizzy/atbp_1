@@ -1,7 +1,7 @@
 module.exports = {
     preset: 'babel-jest',
     testEnvironment: 'node',
-    testMatch: ['**/__tests__/**/*.test.js'],
+    testMatch: ['**/*.test.js'],
     setupFilesAfterEnv: ['allure-jest'],
     reporters: [
       'default',
