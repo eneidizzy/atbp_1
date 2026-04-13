@@ -144,4 +144,17 @@ describe('calculateFine', () => {
                 .toThrow('Ошибка доступа к БД: Connection timeout');
         });
     });
+    
+    describe('CI/CD VALIDATION TESTS', () => {
+        test('CI/CD pipeline работает корректно', async () => {
+            mockDbInstance.getBorrowInfo.mockResolvedValue({
+                daysOverdue: 1,
+                dailyRate: 1,
+                isReturned: false
+            });
+        
+            const result = await calculateFine(100, 'ci-test', mockDbInstance);
+            expect(result).toBe(1);
+        });
+    });
 });
