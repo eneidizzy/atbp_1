@@ -1,5 +1,5 @@
 const { test, expect } = require('@playwright/test');
-const LibraryPage = require('../pages/LibraryPage');
+const LibraryPage = require('../e2e/pages/LibraryPage');
 
 test.describe('Библиотечный штраф', () => {
     
