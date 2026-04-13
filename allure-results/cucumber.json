@@ -1,0 +1,916 @@
+[
+  {
+    "description": "  Как библиотечная система\n  Я хочу рассчитывать штраф за просрочку книги\n  Чтобы автоматизировать процесс начисления штрафов\n\n  Фон:\n    Дано сервис доступен по адресу \"/api/status\"",
+    "elements": [
+      {
+        "description": "",
+        "id": "расчет-библиотечного-штрафа;успешный-расчет-штрафа-за-просроченную-книгу",
+        "keyword": "Сценарий",
+        "line": 11,
+        "name": "Успешный расчет штрафа за просроченную книгу",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Дано ",
+            "line": 12,
+            "name": "книга с ID 1 для пользователя \"user123\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 13,
+            "name": "количество дней просрочки равно 5",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 14,
+            "name": "ежедневный тариф составляет 2",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Когда ",
+            "line": 15,
+            "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Тогда ",
+            "line": 16,
+            "name": "API возвращает статус-код 200",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 17,
+            "name": "ответ содержит сообщение \"success\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 18,
+            "name": "размер штрафа равен 10",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "расчет-библиотечного-штрафа;нулевой-штраф-при-возвращенной-книге",
+        "keyword": "Сценарий",
+        "line": 20,
+        "name": "Нулевой штраф при возвращенной книге",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Дано ",
+            "line": 21,
+            "name": "книга с ID 4 для пользователя \"user456\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 22,
+            "name": "книга возвращена",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Когда ",
+            "line": 23,
+            "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Тогда ",
+            "line": 24,
+            "name": "API возвращает статус-код 200",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 25,
+            "name": "ответ содержит сообщение \"success\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 26,
+            "name": "размер штрафа равен 0",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "расчет-библиотечного-штрафа;ошибка-при-некорректном-id-книги",
+        "keyword": "Сценарий",
+        "line": 28,
+        "name": "Ошибка при некорректном ID книги",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Дано ",
+            "line": 29,
+            "name": "книга с ID 999 для пользователя \"user789\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Когда ",
+            "line": 30,
+            "name": "я получаю данные книги по ID",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Тогда ",
+            "line": 31,
+            "name": "API возвращает статус-код 404",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 32,
+            "name": "ответ содержит текст ошибки \"Книга не найдена\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "расчет-библиотечного-штрафа;расчет-штрафа-с-данными-из-get-запроса",
+        "keyword": "Сценарий",
+        "line": 34,
+        "name": "Расчет штрафа с данными из GET запроса",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Дано ",
+            "line": 35,
+            "name": "книга с ID 2 для пользователя \"user456\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Когда ",
+            "line": 36,
+            "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Тогда ",
+            "line": 37,
+            "name": "API возвращает статус-код 200",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 38,
+            "name": "ответ содержит сообщение \"success\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 39,
+            "name": "размер штрафа равен 50",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "расчет-библиотечного-штрафа;расчет-штрафа-для-разных-дней-просрочки",
+        "keyword": "Структура сценария",
+        "line": 51,
+        "name": "Расчет штрафа для разных дней просрочки",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Дано ",
+            "line": 42,
+            "name": "книга с ID 1 для пользователя \"user1\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 43,
+            "name": "количество дней просрочки равно 0",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 44,
+            "name": "ежедневный тариф составляет 2",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Когда ",
+            "line": 45,
+            "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Тогда ",
+            "line": 46,
+            "name": "API возвращает статус-код 200",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 47,
+            "name": "размер штрафа равен 0",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "расчет-библиотечного-штрафа;расчет-штрафа-для-разных-дней-просрочки",
+        "keyword": "Структура сценария",
+        "line": 52,
+        "name": "Расчет штрафа для разных дней просрочки",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Дано ",
+            "line": 42,
+            "name": "книга с ID 1 для пользователя \"user2\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 43,
+            "name": "количество дней просрочки равно 5",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 44,
+            "name": "ежедневный тариф составляет 2",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Когда ",
+            "line": 45,
+            "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Тогда ",
+            "line": 46,
+            "name": "API возвращает статус-код 200",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 47,
+            "name": "размер штрафа равен 10",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "расчет-библиотечного-штрафа;расчет-штрафа-для-разных-дней-просрочки",
+        "keyword": "Структура сценария",
+        "line": 53,
+        "name": "Расчет штрафа для разных дней просрочки",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Дано ",
+            "line": 42,
+            "name": "книга с ID 1 для пользователя \"user3\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 43,
+            "name": "количество дней просрочки равно 10",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 44,
+            "name": "ежедневный тариф составляет 2",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Когда ",
+            "line": 45,
+            "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Тогда ",
+            "line": 46,
+            "name": "API возвращает статус-код 200",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 47,
+            "name": "размер штрафа равен 20",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "расчет-библиотечного-штрафа;расчет-штрафа-для-разных-дней-просрочки",
+        "keyword": "Структура сценария",
+        "line": 54,
+        "name": "Расчет штрафа для разных дней просрочки",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Дано ",
+            "line": 42,
+            "name": "книга с ID 1 для пользователя \"user4\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 43,
+            "name": "количество дней просрочки равно 15",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 44,
+            "name": "ежедневный тариф составляет 2",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Когда ",
+            "line": 45,
+            "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Тогда ",
+            "line": 46,
+            "name": "API возвращает статус-код 200",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 47,
+            "name": "размер штрафа равен 30",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "расчет-библиотечного-штрафа;расчет-штрафа-для-разных-дней-просрочки",
+        "keyword": "Структура сценария",
+        "line": 55,
+        "name": "Расчет штрафа для разных дней просрочки",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Дано ",
+            "line": 42,
+            "name": "книга с ID 1 для пользователя \"user5\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 43,
+            "name": "количество дней просрочки равно 30",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 44,
+            "name": "ежедневный тариф составляет 2",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Когда ",
+            "line": 45,
+            "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Тогда ",
+            "line": 46,
+            "name": "API возвращает статус-код 200",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 47,
+            "name": "размер штрафа равен 60",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "расчет-библиотечного-штрафа;расчет-штрафа-для-разных-тарифов",
+        "keyword": "Структура сценария",
+        "line": 67,
+        "name": "Расчет штрафа для разных тарифов",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Дано ",
+            "line": 58,
+            "name": "книга с ID 1 для пользователя \"user6\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 59,
+            "name": "количество дней просрочки равно 7",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 60,
+            "name": "ежедневный тариф составляет 2",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Когда ",
+            "line": 61,
+            "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Тогда ",
+            "line": 62,
+            "name": "API возвращает статус-код 200",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 63,
+            "name": "размер штрафа равен 14",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "расчет-библиотечного-штрафа;расчет-штрафа-для-разных-тарифов",
+        "keyword": "Структура сценария",
+        "line": 68,
+        "name": "Расчет штрафа для разных тарифов",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Дано ",
+            "line": 58,
+            "name": "книга с ID 1 для пользователя \"user7\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 59,
+            "name": "количество дней просрочки равно 7",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 60,
+            "name": "ежедневный тариф составляет 5",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Когда ",
+            "line": 61,
+            "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Тогда ",
+            "line": 62,
+            "name": "API возвращает статус-код 200",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 63,
+            "name": "размер штрафа равен 35",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "расчет-библиотечного-штрафа;расчет-штрафа-для-разных-тарифов",
+        "keyword": "Структура сценария",
+        "line": 69,
+        "name": "Расчет штрафа для разных тарифов",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Дано ",
+            "line": 58,
+            "name": "книга с ID 1 для пользователя \"user8\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 59,
+            "name": "количество дней просрочки равно 7",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 60,
+            "name": "ежедневный тариф составляет 10",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Когда ",
+            "line": 61,
+            "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Тогда ",
+            "line": 62,
+            "name": "API возвращает статус-код 200",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 63,
+            "name": "размер штрафа равен 70",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "расчет-библиотечного-штрафа;расчет-штрафа-для-разных-тарифов",
+        "keyword": "Структура сценария",
+        "line": 70,
+        "name": "Расчет штрафа для разных тарифов",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Дано ",
+            "line": 58,
+            "name": "книга с ID 1 для пользователя \"user9\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 59,
+            "name": "количество дней просрочки равно 7",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 60,
+            "name": "ежедневный тариф составляет 3",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Когда ",
+            "line": 61,
+            "name": "я отправляю POST запрос на \"/api/calculate-fine\"",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Тогда ",
+            "line": 62,
+            "name": "API возвращает статус-код 200",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "И ",
+            "line": 63,
+            "name": "размер штрафа равен 21",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "расчет-библиотечного-штрафа",
+    "line": 3,
+    "keyword": "Функция",
+    "name": "Расчет библиотечного штрафа",
+    "tags": [],
+    "uri": "features\\library_fine.feature"
+  }
+]

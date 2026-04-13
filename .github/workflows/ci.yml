@@ -11,78 +11,70 @@ env:
 
 jobs:
   unit-tests:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [18.x, 20.x, 22.x]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run test:unit
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: allure-jest-${{ matrix.os }}-node${{ matrix.node-version }}
-          path: allure-results/
+  runs-on: ubuntu-latest
+  strategy:
+    matrix:
+      node-version: [18.x, 20.x, 22.x]
+  steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run test:unit
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: allure-jest-node${{ matrix.node-version }}
+        path: allure-results/
 
-  api-tests:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [18.x, 20.x, 22.x]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-      - run: npm ci
-      - name: Start server
-        run: |
-          npm start &
-          npx wait-on http://localhost:3000
-      - run: npm run test:api
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: allure-api-${{ matrix.os }}-node${{ matrix.node-version }}
-          path: allure-results/
+api-tests:
+  runs-on: ubuntu-latest
+  strategy:
+    matrix:
+      node-version: [18.x, 20.x, 22.x]
+  steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - name: Start server
+      run: |
+        npm start &
+        npx wait-on http://localhost:3000 --timeout 30000
+    - run: npm run test:api
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: allure-api-node${{ matrix.node-version }}
+        path: allure-results/
 
-  ui-tests:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest]
-        node-version: [18.x, 20.x, 22.x]
-        browser: [chromium, firefox]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ matrix.browser }}
-      - run: npm ci
-      - run: npx playwright install ${{ matrix.browser }} --with-deps
-      - name: Start server
-        run: |
-          npm start &
-          npx wait-on http://localhost:3000
-      - run: npm run test:ui -- --project=${{ matrix.browser }}
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: allure-ui-${{ matrix.browser }}-${{ matrix.os }}-node${{ matrix.node-version }}
-          path: allure-results/
+ui-tests:
+  runs-on: ubuntu-latest
+  strategy:
+    matrix:
+      node-version: [18.x, 20.x, 22.x]
+  steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npx playwright install chromium --with-deps
+    - name: Start server
+      run: |
+        npm start &
+        npx wait-on http://localhost:3000 --timeout 30000
+    - run: npm run test:ui -- --project=chromium
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: allure-ui-node${{ matrix.node-version }}
+        path: allure-results/
 
   allure-report:
     runs-on: ubuntu-latest

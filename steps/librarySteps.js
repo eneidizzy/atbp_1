@@ -1,6 +1,6 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
 const request = require('supertest');
-const app = require('../../server');
+const app = require('../server');
 
 let response = null;
 
