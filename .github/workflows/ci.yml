@@ -1,0 +1,140 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  ALLURE_RESULTS_DIR: allure-results
+
+jobs:
+  unit-tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [18.x, 20.x, 22.x]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run test:unit
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-jest-${{ matrix.os }}-node${{ matrix.node-version }}
+          path: allure-results/
+
+  api-tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [18.x, 20.x, 22.x]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - name: Start server
+        run: |
+          npm start &
+          npx wait-on http://localhost:3000
+      - run: npm run test:api
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-api-${{ matrix.os }}-node${{ matrix.node-version }}
+          path: allure-results/
+
+  ui-tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        node-version: [18.x, 20.x, 22.x]
+        browser: [chromium, firefox]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ matrix.browser }}
+      - run: npm ci
+      - run: npx playwright install ${{ matrix.browser }} --with-deps
+      - name: Start server
+        run: |
+          npm start &
+          npx wait-on http://localhost:3000
+      - run: npm run test:ui -- --project=${{ matrix.browser }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-ui-${{ matrix.browser }}-${{ matrix.os }}-node${{ matrix.node-version }}
+          path: allure-results/
+
+  allure-report:
+    runs-on: ubuntu-latest
+    needs: [unit-tests, api-tests, ui-tests]
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          path: all-results/
+      - run: |
+          mkdir -p merged-results
+          find all-results -name "*.json" -exec cp {} merged-results/ \;
+      - run: npx allure generate merged-results --clean -o allure-report
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-report
+          path: allure-report/
+      - uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          destination_dir: allure-reports/${{ github.run_number }}
+
+  notify:
+    runs-on: ubuntu-latest
+    needs: [unit-tests, api-tests, ui-tests]
+    if: always() && secrets.TELEGRAM_BOT_TOKEN != ''
+    steps:
+      - name: Get status
+        id: status
+        run: |
+          if [[ "${{ needs.unit-tests.result }}" == "success" ]] && \
+             [[ "${{ needs.api-tests.result }}" == "success" ]] && \
+             [[ "${{ needs.ui-tests.result }}" == "success" ]]; then
+            echo "status=SUCCESS" >> $GITHUB_OUTPUT
+          else
+            echo "status=FAILED" >> $GITHUB_OUTPUT
+          fi
+      - uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            CI/CD Pipeline ${{ steps.status.outputs.status }}
+            Repo: ${{ github.repository }}
+            Branch: ${{ github.ref_name }}
+            Commit: ${{ github.sha }}
+            Unit: ${{ needs.unit-tests.result }}
+            API: ${{ needs.api-tests.result }}
+            UI: ${{ needs.ui-tests.result }}
+            Report: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure-reports/${{ github.run_number }}/
