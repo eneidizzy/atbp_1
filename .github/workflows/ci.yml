@@ -111,31 +111,31 @@ jobs:
           destination_dir: allure-reports/${{ github.run_number }}
 
   notify:
-  runs-on: ubuntu-latest
-  needs: [unit-tests, api-tests, ui-tests]
-  if: always()
-  steps:
-    - name: Get status
-      id: status
-      run: |
-        if [[ "${{ needs.unit-tests.result }}" == "success" ]] && \
-           [[ "${{ needs.api-tests.result }}" == "success" ]] && \
-           [[ "${{ needs.ui-tests.result }}" == "success" ]]; then
-          echo "status=SUCCESS" >> $GITHUB_OUTPUT
-        else
-          echo "status=FAILED" >> $GITHUB_OUTPUT
-        fi
-    - name: Send Telegram notification
-      uses: appleboy/telegram-action@master
-      with:
-        to: ${{ secrets.TELEGRAM_CHAT_ID }}
-        token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        message: |
-          CI/CD Pipeline ${{ steps.status.outputs.status }}
-          Repo: ${{ github.repository }}
-          Branch: ${{ github.ref_name }}
-          Commit: ${{ github.sha }}
-          Unit: ${{ needs.unit-tests.result }}
-          API: ${{ needs.api-tests.result }}
-          UI: ${{ needs.ui-tests.result }}
-          Report: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure-reports/${{ github.run_number }}/
+    runs-on: ubuntu-latest
+    needs: [unit-tests, api-tests, ui-tests]
+    if: always()
+    steps:
+      - name: Get status
+        id: status
+        run: |
+          if [[ "${{ needs.unit-tests.result }}" == "success" ]] && \
+             [[ "${{ needs.api-tests.result }}" == "success" ]] && \
+             [[ "${{ needs.ui-tests.result }}" == "success" ]]; then
+            echo "status=SUCCESS" >> $GITHUB_OUTPUT
+          else
+            echo "status=FAILED" >> $GITHUB_OUTPUT
+          fi
+      - name: Send Telegram notification
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          message: |
+            CI/CD Pipeline ${{ steps.status.outputs.status }}
+            Repo: ${{ github.repository }}
+            Branch: ${{ github.ref_name }}
+            Commit: ${{ github.sha }}
+            Unit: ${{ needs.unit-tests.result }}
+            API: ${{ needs.api-tests.result }}
+            UI: ${{ needs.ui-tests.result }}
+            Report: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure-reports/${{ github.run_number }}/
